@@ -10,38 +10,41 @@ def create_files(folder_name):
         os.makedirs(directory)
 
     comment = """\
-412. Fizz Buzz
+11. Container With Most Water
 Solved
-Easy
+Medium
 Topics
 Companies
+Hint
 
-Given an integer n, return a string array answer (1-indexed) where:
+You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
 
-    answer[i] == "FizzBuzz" if i is divisible by 3 and 5.
-    answer[i] == "Fizz" if i is divisible by 3.
-    answer[i] == "Buzz" if i is divisible by 5.
-    answer[i] == i (as a string) if none of the above conditions are true.
+Find two lines that together with the x-axis form a container, such that the container contains the most water.
+
+Return the maximum amount of water a container can store.
+
+Notice that you may not slant the container.
 
  
 
 Example 1:
 
-Input: n = 3
-Output: ["1","2","Fizz"]
+Input: height = [1,8,6,2,5,4,8,3,7]
+Output: 49
+Explanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.
 
 Example 2:
 
-Input: n = 5
-Output: ["1","2","Fizz","4","Buzz"]
+Input: height = [1,1]
+Output: 1
 
-Example 3:
-
-Input: n = 15
-Output: ["1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13","14","FizzBuzz"]
+ 
 
 Constraints:
-    1 <= n <= 104
+
+    n == height.length
+    2 <= n <= 105
+    0 <= height[i] <= 104
   """
 
     # Define file names and their corresponding content templates
