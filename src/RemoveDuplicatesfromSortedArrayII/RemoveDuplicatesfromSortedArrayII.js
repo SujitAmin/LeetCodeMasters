@@ -1,15 +1,4 @@
-import os
-import sys
-
-def create_files(folder_name):
-    # Directory to hold the files
-    directory = os.path.join(os.getcwd(), folder_name)
-
-    # Create the directory if it doesn't exist
-    if not os.path.exists(directory):
-        os.makedirs(directory)
-
-    comment = """\
+/*
     80. Remove Duplicates from Sorted Array II
 Solved
 Medium
@@ -60,26 +49,42 @@ Constraints:
     1 <= nums.length <= 3 * 104
     -104 <= nums[i] <= 104
     nums is sorted in non-decreasing order.
-  """
+  
+*/
 
-    # Define file names and their corresponding content templates
-    templates = {
-        ".java": "/*\n{0}\n*/\n\npublic class {1} {{\n    public static void main(String[] args) {{\n        // Code goes here\n    }}\n}}",
-        ".js": "/*\n{0}\n*/\n\nfunction main() {{\n    // Code goes here\n}}\nmain();",
-        ".py": "'''\n{0}\n'''\n\ndef main():\n    # Code goes here\n\nif __name__ == '__main__':\n    main()",
-        ".swift": "/*\n{0}\n*/\n\nimport Foundation\n\nfunc main() {{\n    // Code goes here\n}}\n\nmain()"
+var removeDuplicates = (nums) => {
+    var nonRepeatingValueIndex = 1; // imp
+    var count = 1;
+    var n = nums.length;
+
+    //
+    // Start from the second element of the array and process
+    // elements one by one.
+    //
+    for (var i = 1; i < n; i++) {
+        //
+        // If the current element is a duplicate, increment the count.
+        //
+        if (nums[i] === nums[i - 1]) {
+            count += 1;
+        }
+        // not equal then count becomes 1.
+        else {
+            //
+            // Reset the count since we encountered a different element
+            // than the previous one.
+            //
+            count = 1;
+        }
+
+        //
+        // For a count <= 2, we copy the element over thus
+        // overwriting the element at index "j" in the array
+        //
+        if (count <= 2) {
+            nums[nonRepeatingValueIndex] = nums[i];
+            nonRepeatingValueIndex++;
+        }
     }
-
-    # Create files with templates
-    for extension, content in templates.items():
-        file_path = os.path.join(directory, folder_name + extension)
-        formatted_content = content.format(comment, folder_name)
-        with open(file_path, 'w') as file:
-            file.write(formatted_content)
-        print(f"Created: {file_path}")
-
-if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Usage: python create_files.py [folder_name]")
-    else:
-        create_files(sys.argv[1])
+    return nonRepeatingValueIndex;
+};
