@@ -10,38 +10,38 @@ def create_files(folder_name):
         os.makedirs(directory)
 
     comment = """\
-    977. Squares of a Sorted Array
+   242. Valid Anagram
 Solved
 Easy
 Topics
 Companies
 
-Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.
+Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+
+An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
 
  
 
 Example 1:
 
-Input: nums = [-4,-1,0,3,10]
-Output: [0,1,9,16,100]
-Explanation: After squaring, the array becomes [16,1,0,9,100].
-After sorting, it becomes [0,1,9,16,100].
+Input: s = "anagram", t = "nagaram"
+Output: true
 
 Example 2:
 
-Input: nums = [-7,-3,2,3,11]
-Output: [4,9,9,49,121]
+Input: s = "rat", t = "car"
+Output: false
 
  
 
 Constraints:
 
-    1 <= nums.length <= 104
-    -104 <= nums[i] <= 104
-    nums is sorted in non-decreasing order.
+    1 <= s.length, t.length <= 5 * 104
+    s and t consist of lowercase English letters.
 
  
-Follow up: Squaring each element and sorting the new array is very trivial, could you find an O(n) solution using a different approach?
+
+Follow up: What if the inputs contain Unicode characters? How would you adapt your solution to such a case?
 
     """
 
