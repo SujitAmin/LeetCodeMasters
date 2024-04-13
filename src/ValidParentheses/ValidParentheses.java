@@ -1,38 +1,44 @@
 /*
-   242. Valid Anagram
+20. Valid Parentheses
 Solved
 Easy
 Topics
 Companies
+Hint
 
-Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
 
-An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+An input string is valid if:
 
- 
+    Open brackets must be closed by the same type of brackets.
+    Open brackets must be closed in the correct order.
+    Every close bracket has a corresponding open bracket of the same type.
+
+
 
 Example 1:
 
-Input: s = "anagram", t = "nagaram"
+Input: s = "()"
 Output: true
 
 Example 2:
 
-Input: s = "rat", t = "car"
+Input: s = "()[]{}"
+Output: true
+
+Example 3:
+
+Input: s = "(]"
 Output: false
 
- 
+
 
 Constraints:
 
-    1 <= s.length, t.length <= 5 * 104
-    s and t consist of lowercase English letters.
+    1 <= s.length <= 104
+    s consists of parentheses only '()[]{}'.
 
- 
 
-Follow up: What if the inputs contain Unicode characters? How would you adapt your solution to such a case?
-
-    
 */
 
 class Solution {
