@@ -1,15 +1,4 @@
-import os
-import sys
-
-def create_files(folder_name):
-    # Directory to hold the files
-    directory = os.path.join(os.getcwd(), folder_name)
-
-    # Create the directory if it doesn't exist
-    if not os.path.exists(directory):
-        os.makedirs(directory)
-
-    comment = """\
+'''
     88. Merge Sorted Array
 Solved
 Easy
@@ -63,26 +52,22 @@ Follow up: Can you come up with an algorithm that runs in O(m + n) time?
 
 
 
-    """
+    
+'''
+class Solution:
+    def merge(self, nums1, m, nums2, n):
+        # Start from the end of both arrays
+        index1 = m - 1  # Last index of the first array
+        index2 = n - 1  # Last index of the second array
+        mergeIndex = m + n - 1  # Last index for the merged array
 
-    # Define file names and their corresponding content templates
-    templates = {
-        ".java": "/*\n{0}\n*/\n\npublic class {1} {{\n    public static void main(String[] args) {{\n        // Code goes here\n    }}\n}}",
-        ".js": "/*\n{0}\n*/\n\nfunction main() {{\n    // Code goes here\n}}\nmain();",
-        ".py": "'''\n{0}\n'''\n\ndef main():\n    # Code goes here\n\nif __name__ == '__main__':\n    main()",
-        ".swift": "/*\n{0}\n*/\n\nimport Foundation\n\nfunc main() {{\n    // Code goes here\n}}\n\nmain()"
-    }
-
-    # Create files with templates
-    for extension, content in templates.items():
-        file_path = os.path.join(directory, folder_name + extension)
-        formatted_content = content.format(comment, folder_name)
-        with open(file_path, 'w') as file:
-            file.write(formatted_content)
-        print(f"Created: {file_path}")
-
-if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Usage: python create_files.py [folder_name]")
-    else:
-        create_files(sys.argv[1])
+        # Iterate backwards from the end of the merged array
+        while index2 >= 0:
+            # Check if first array is exhausted or the current element of nums2 is greater
+            if index1 < 0 or nums2[index2] > nums1[index1]:
+                nums1[mergeIndex] = nums2[index2]
+                index2 -= 1  # Move to the next element in nums2
+            else:
+                nums1[mergeIndex] = nums1[index1]
+                index1 -= 1  # Move to the next element in nums1
+            mergeIndex -= 1  # Move to the next merge position
