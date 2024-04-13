@@ -1,15 +1,4 @@
-import os
-import sys
-
-def create_files(folder_name):
-    # Directory to hold the files
-    directory = os.path.join(os.getcwd(), folder_name)
-
-    # Create the directory if it doesn't exist
-    if not os.path.exists(directory):
-        os.makedirs(directory)
-
-    comment = """\
+/*
 27. Remove Element
 Solved
 Easy
@@ -66,26 +55,26 @@ Constraints:
     0 <= nums.length <= 100
     0 <= nums[i] <= 50
     0 <= val <= 100
-  """
+  
+*/
 
-    # Define file names and their corresponding content templates
-    templates = {
-        ".java": "/*\n{0}\n*/\n\npublic class {1} {{\n    public static void main(String[] args) {{\n        // Code goes here\n    }}\n}}",
-        ".js": "/*\n{0}\n*/\n\nfunction main() {{\n    // Code goes here\n}}\nmain();",
-        ".py": "'''\n{0}\n'''\n\ndef main():\n    # Code goes here\n\nif __name__ == '__main__':\n    main()",
-        ".swift": "/*\n{0}\n*/\n\nimport Foundation\n\nfunc main() {{\n    // Code goes here\n}}\n\nmain()"
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        int i = 0;
+        int nonValuePointer = 0;
+        for (i = 0; i < nums.length; i++) {
+            // silly mistake nums[nonValuePointer] instead of nums[i]
+            if (nums[i] != val) {
+                swap(nums, nonValuePointer, i);
+                nonValuePointer++;
+            }
+        }
+        return nonValuePointer;
     }
 
-    # Create files with templates
-    for extension, content in templates.items():
-        file_path = os.path.join(directory, folder_name + extension)
-        formatted_content = content.format(comment, folder_name)
-        with open(file_path, 'w') as file:
-            file.write(formatted_content)
-        print(f"Created: {file_path}")
-
-if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Usage: python create_files.py [folder_name]")
-    else:
-        create_files(sys.argv[1])
+    void swap(int[] nums, int left, int right) {
+        int temp = nums[left];
+        nums[left] = nums[right];
+        nums[right] = temp;
+    }
+}
