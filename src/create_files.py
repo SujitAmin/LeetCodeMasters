@@ -10,34 +10,26 @@ def create_files(folder_name):
         os.makedirs(directory)
 
     comment = """\
-844. Backspace String Compare
-Easy
-
-Given two strings s and t, return true if they are equal when both are typed into empty text editors. '#' means a backspace character.
-Note that after backspacing an empty text, the text will continue empty.
-
- 
+42. Trapping Rain Water
+Solved
+Hard
+Topics
+Companies
+Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.
 
 Example 1:
-Input: s = "ab#c", t = "ad#c"
-Output: true
-Explanation: Both s and t become "ac".
+Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
+Output: 6
+Explanation: The above elevation map (black section) is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped.
 
 Example 2:
-Input: s = "ab##", t = "c#d#"
-Output: true
-Explanation: Both s and t become "".
-
-Example 3:
-Input: s = "a#c", t = "b"
-Output: false
-Explanation: s becomes "c" while t becomes "b".
+Input: height = [4,2,0,3,2,5]
+Output: 9
 
 Constraints:
-    1 <= s.length, t.length <= 200
-    s and t only contain lowercase letters and '#' characters.
-
-Follow up: Can you solve it in O(n) time and O(1) space?
+    n == height.length
+    1 <= n <= 2 * 104
+    0 <= height[i] <= 105
   """
 
     # Define file names and their corresponding content templates
