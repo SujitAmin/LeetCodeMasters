@@ -22,8 +22,36 @@ Constraints:
   
 '''
 
-def main():
-    # Code goes here
+class Solution:
+    def next_permutation(self, nums):
+        first_decreasing_element_index = self.find_first_decreasing(nums)
+        # this is because if it is smaller than zero we reached the last one in this.
+        # [1,2,3], [1,3,2], [2, 1, 3], [2, 3, 1], [3,1,2], [3,2,1]
+        # so just reverse.
+        if first_decreasing_element_index >= 0:
+            # find element just larger than firstDecreasingElementIndex
+            find_just_larger_index = self.find_just_larger_index(nums, first_decreasing_element_index)
+            self.swap(nums, first_decreasing_element_index, find_just_larger_index)
+        self.reverse(nums, first_decreasing_element_index + 1)
 
-if __name__ == '__main__':
-    main()
+    def swap(self, nums, first_decreasing_element_index, find_just_larger_index):
+        nums[first_decreasing_element_index], nums[find_just_larger_index] = nums[find_just_larger_index], nums[first_decreasing_element_index]
+
+    def find_first_decreasing(self, nums):
+        for i in range(len(nums) - 1, 0, -1):
+            if nums[i - 1] < nums[i]:
+                return i - 1
+        return -1
+
+    def find_just_larger_index(self, nums, first_decreasing_element_index):
+        for i in range(len(nums) - 1, first_decreasing_element_index, -1):
+            if nums[i] > nums[first_decreasing_element_index]:
+                return i
+        return first_decreasing_element_index
+
+    def reverse(self, nums, i):
+        j = len(nums) - 1
+        while i <= j:
+            nums[i], nums[j] = nums[j], nums[i]
+            i += 1
+            j -= 1

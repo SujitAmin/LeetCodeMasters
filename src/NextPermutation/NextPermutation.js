@@ -22,7 +22,55 @@ Constraints:
   
 */
 
-function main() {
-    // Code goes here
-}
-main();
+    // Generates the next lexicographical permutation of the given integer array.
+    var nextPermutation = (nums) => {
+        var firstDecreasingElementIndex = findFirstDecreasing(nums);
+        // this is because if it is smaller than zero we reached the last one in this.
+        // [1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], [3,2,1]
+        // so just reverse.
+        if (firstDecreasingElementIndex >= 0) {
+            // find element just larger than firstDecreasingElementIndex
+            var findJustLargerIndex = findJustLargerIndex(nums, firstDecreasingElementIndex);
+            swap(nums, firstDecreasingElementIndex, findJustLargerIndex);
+        }
+        reverse(nums, firstDecreasingElementIndex + 1);
+    }
+
+    var swap = (nums, firstDecreasingElementIndex, findJustLargerIndex) => {
+        var temp = nums[firstDecreasingElementIndex];
+        nums[firstDecreasingElementIndex] = nums[findJustLargerIndex];
+        nums[findJustLargerIndex] = temp;
+    }
+
+    var findFirstDecreasing = (nums) => {
+        for (var i = nums.length - 1; i > 0; i--) {
+            if (nums[i - 1] < nums[i]) {
+                return i - 1;
+            }
+        }
+        return -1;
+    }
+
+    var findJustLargerIndex = (nums, firstDecreasingElementIndex) => {
+        for (var i = nums.length - 1; i > firstDecreasingElementIndex; i--) {
+            if (nums[i] > nums[firstDecreasingElementIndex]) {
+                return i;
+            }
+        }
+        return firstDecreasingElementIndex;
+    }
+
+    var reverse = (nums, start) => {
+        var i = start;
+        var j = nums.length - 1;
+        while (i < j) {
+            var temp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = temp;
+            i++;
+            j--;
+        }
+    }
+
+
+

@@ -10,26 +10,33 @@ def create_files(folder_name):
         os.makedirs(directory)
 
     comment = """\
-42. Trapping Rain Water
+704. Binary Search
 Solved
-Hard
+Easy
 Topics
 Companies
-Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.
+
+Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.
+You must write an algorithm with O(log n) runtime complexity.
+
+ 
 
 Example 1:
-Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
-Output: 6
-Explanation: The above elevation map (black section) is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped.
+
+Input: nums = [-1,0,3,5,9,12], target = 9
+Output: 4
+Explanation: 9 exists in nums and its index is 4
 
 Example 2:
-Input: height = [4,2,0,3,2,5]
-Output: 9
+Input: nums = [-1,0,3,5,9,12], target = 2
+Output: -1
+Explanation: 2 does not exist in nums so return -1
 
 Constraints:
-    n == height.length
-    1 <= n <= 2 * 104
-    0 <= height[i] <= 105
+    1 <= nums.length <= 104
+    -104 < nums[i], target < 104
+    All the integers in nums are unique.
+    nums is sorted in ascending order.
   """
 
     # Define file names and their corresponding content templates
