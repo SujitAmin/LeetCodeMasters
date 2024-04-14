@@ -10,41 +10,47 @@ def create_files(folder_name):
         os.makedirs(directory)
 
     comment = """\
-1768. Merge Strings Alternately
-Easy
+1578. Minimum Time to Make Rope Colorful
+Solved
+Medium
+Topics
+Companies
+Hint
 
-You are given two strings word1 and word2. Merge the strings by adding letters in alternating order, starting with word1. If a string is longer than the other, append the additional letters onto the end of the merged string.
-Return the merged string.
+Alice has n balloons arranged on a rope. You are given a 0-indexed string colors where colors[i] is the color of the ith balloon.
+
+Alice wants the rope to be colorful. She does not want two consecutive balloons to be of the same color, so she asks Bob for help. Bob can remove some balloons from the rope to make it colorful. You are given a 0-indexed integer array neededTime where neededTime[i] is the time (in seconds) that Bob needs to remove the ith balloon from the rope.
+
+Return the minimum time Bob needs to make the rope colorful.
+
+ 
 
 Example 1:
-Input: word1 = "abc", word2 = "pqr"
-Output: "apbqcr"
-Explanation: The merged string will be merged as so:
-word1:  a   b   c
-word2:    p   q   r
-merged: a p b q c r
+
+Input: colors = "abaac", neededTime = [1,2,3,4,5]
+Output: 3
+Explanation: In the above image, 'a' is blue, 'b' is red, and 'c' is green.
+Bob can remove the blue balloon at index 2. This takes 3 seconds.
+There are no longer two consecutive balloons of the same color. Total time = 3.
 
 Example 2:
 
-Input: word1 = "ab", word2 = "pqrs"
-Output: "apbqrs"
-Explanation: Notice that as word2 is longer, "rs" is appended to the end.
-word1:  a   b 
-word2:    p   q   r   s
-merged: a p b q   r   s
+Input: colors = "abc", neededTime = [1,2,3]
+Output: 0
+Explanation: The rope is already colorful. Bob does not need to remove any balloons from the rope.
 
 Example 3:
-Input: word1 = "abcd", word2 = "pq"
-Output: "apbqcd"
-Explanation: Notice that as word1 is longer, "cd" is appended to the end.
-word1:  a   b   c   d
-word2:    p   q 
-merged: a p b q c   d
+
+Input: colors = "aabaa", neededTime = [1,2,3,4,1]
+Output: 2
+Explanation: Bob will remove the balloons at indices 0 and 4. Each balloons takes 1 second to remove.
+There are no longer two consecutive balloons of the same color. Total time = 1 + 1 = 2.
 
 Constraints:
-    1 <= word1.length, word2.length <= 100
-    word1 and word2 consist of lowercase English letters.
-
+    n == colors.length == neededTime.length
+    1 <= n <= 105
+    1 <= neededTime[i] <= 104
+    colors contains only lowercase English letters.
   """
 
     # Define file names and their corresponding content templates
