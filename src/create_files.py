@@ -10,33 +10,41 @@ def create_files(folder_name):
         os.makedirs(directory)
 
     comment = """\
-704. Binary Search
+415. Add Strings
 Solved
 Easy
 Topics
 Companies
 
-Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.
-You must write an algorithm with O(log n) runtime complexity.
+Given two non-negative integers, num1 and num2 represented as string, return the sum of num1 and num2 as a string.
+
+You must solve the problem without using any built-in library for handling large integers (such as BigInteger). You must also not convert the inputs to integers directly.
 
  
 
 Example 1:
 
-Input: nums = [-1,0,3,5,9,12], target = 9
-Output: 4
-Explanation: 9 exists in nums and its index is 4
+Input: num1 = "11", num2 = "123"
+Output: "134"
 
 Example 2:
-Input: nums = [-1,0,3,5,9,12], target = 2
-Output: -1
-Explanation: 2 does not exist in nums so return -1
+
+Input: num1 = "456", num2 = "77"
+Output: "533"
+
+Example 3:
+
+Input: num1 = "0", num2 = "0"
+Output: "0"
+
+ 
 
 Constraints:
-    1 <= nums.length <= 104
-    -104 < nums[i], target < 104
-    All the integers in nums are unique.
-    nums is sorted in ascending order.
+
+    1 <= num1.length, num2.length <= 104
+    num1 and num2 consist of only digits.
+    num1 and num2 don't have any leading zeros except for the zero itself.
+
   """
 
     # Define file names and their corresponding content templates
